@@ -27,12 +27,13 @@ public class PigLatinTranslator {
             int endIndex = word.indexOf("y");
             String firstLetters = word.substring(0, endIndex);
             pigLatin = word.substring(endIndex).concat(firstLetters + "ay");
-        }
-        if(word.matches(".*\\s.*")) {
+        } else if(word.matches(".*\\s.*")) {
             String[] words = word.split("\\s+");
-            for(int i = 0; i <= words.length; i++) {
-                String translated = translate(words[i]);
+            String[] translatedWords = new String[words.length];
+            for(int i = 0; i < words.length; i++) {
+                translatedWords[i] = translate(words[i]);
             }
+            pigLatin = String.join(" ", translatedWords);
         }
         return pigLatin;
     }
