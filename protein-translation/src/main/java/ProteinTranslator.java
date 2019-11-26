@@ -4,6 +4,19 @@ import java.util.List;
 class ProteinTranslator {
 
     List<String> translate(String rnaSequence) {
+        List<String> trial = new ArrayList<>();
+        List<String> translateMultiple = new ArrayList<>();
+        if(rnaSequence.length() > 3 && !rnaSequence.startsWith("UAG")) {
+            for(int i = 0; i < rnaSequence.length(); i+=3) {
+                String codon = rnaSequence.substring(i, i + 3);
+                translateMultiple.add(translateMultipleCodons(codon).toString());
+            }
+            return translateMultiple;
+        }
+        return translateMultipleCodons(rnaSequence);
+    }
+
+    List<String> translateMultipleCodons(String rnaSequence) {
         List<String> translated = new ArrayList<>();
         switch(rnaSequence) {
             case "AUG":

@@ -125,7 +125,7 @@ public class ProteinTranslatorTest {
         assertEquals(expected, proteinTranslator.translate("AUGUUUUGG"));
     }
 
-    @Ignore("Remove to run test")
+
     @Test
     public void testTranslationStopsIfStopCodonAtBeginning() {
         List<String> expected = Arrays.asList();
